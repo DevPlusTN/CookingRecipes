@@ -1,14 +1,12 @@
 package com.bam.foodrecipes;
 
 import android.app.Activity;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.FrameLayout;
-import android.widget.Toast;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AppCompatActivity;
 
-public class MainActivity extends Activity implements ListFragment.RecipeSelectable {
+public class MainActivity extends AppCompatActivity implements ListFragment.RecipeSelectable {
 
     public static final String LIST_FRAGMENT = "list_fragment";
     public static final String VIEWPAGER_FRAGMENT = "viewpager_fragment";
@@ -18,11 +16,11 @@ public class MainActivity extends Activity implements ListFragment.RecipeSelecta
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ListFragment savedFragment = (ListFragment) getFragmentManager()
+        ListFragment savedFragment = (ListFragment) getSupportFragmentManager()
                 .findFragmentByTag(LIST_FRAGMENT);
         if(savedFragment == null) {
             ListFragment fragment = new ListFragment();
-            FragmentManager fragmentManager = getFragmentManager();
+            FragmentManager fragmentManager = getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.add(R.id.placeHolder, fragment, LIST_FRAGMENT);
             fragmentTransaction.commit();
@@ -35,7 +33,7 @@ public class MainActivity extends Activity implements ListFragment.RecipeSelecta
         Bundle bundle = new Bundle();
         bundle.putInt(ViewPagerFragment.KEY_RECIPE_INDEX, index);
         fragment.setArguments(bundle);
-        FragmentManager fragmentManager = getFragmentManager();
+        FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.placeHolder, fragment, VIEWPAGER_FRAGMENT);
         fragmentTransaction.addToBackStack(null);
