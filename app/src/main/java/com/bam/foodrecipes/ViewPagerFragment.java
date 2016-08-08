@@ -8,9 +8,6 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
-
-import org.w3c.dom.Text;
 
 public class ViewPagerFragment extends Fragment {
 
