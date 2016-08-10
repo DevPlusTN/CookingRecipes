@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onGridRecipceSelected(int index) {
-        ViewPagerFragment fragment = new ViewPagerFragment();
+        DualPaneFragment fragment = new DualPaneFragment();
         Bundle bundle = new Bundle();
         bundle.putInt(ViewPagerFragment.KEY_RECIPE_INDEX, index);
         fragment.setArguments(bundle);
